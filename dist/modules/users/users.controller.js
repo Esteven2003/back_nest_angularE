@@ -15,15 +15,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
-const login_auth_dto_1 = require("./dto/login-auth.dto");
-const register_auth_dto_1 = require("./dto/register-auth.dto");
+const create_user_dto_1 = require("./dto/create-user.dto");
+const update_user_dto_1 = require("./dto/update-user.dto");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let UsersController = class UsersController {
     usersService;
     constructor(usersService) {
         this.usersService = usersService;
     }
-    create(loginAuthDto) {
-        return this.usersService.create(loginAuthDto);
+    create(createUserDto) {
+        return this.usersService.create(createUserDto);
     }
     findAll() {
         return this.usersService.findAll();
@@ -31,8 +32,8 @@ let UsersController = class UsersController {
     findOne(id) {
         return this.usersService.findOne(+id);
     }
-    update(id, registerAuthDto) {
-        return this.usersService.update(+id, registerAuthDto);
+    update(id, updateUserDto) {
+        return this.usersService.update(+id, updateUserDto);
     }
     remove(id) {
         return this.usersService.remove(+id);
@@ -43,7 +44,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [login_auth_dto_1.LoginAuthDto]),
+    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "create", null);
 __decorate([
@@ -64,7 +65,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, register_auth_dto_1.RegisterAuthDto]),
+    __metadata("design:paramtypes", [String, update_user_dto_1.UpdateUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "update", null);
 __decorate([
@@ -75,6 +76,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "remove", null);
 exports.UsersController = UsersController = __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UsersController);

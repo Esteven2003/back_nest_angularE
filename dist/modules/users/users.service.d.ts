@@ -1,9 +1,9 @@
-import { LoginAuthDto } from './dto/login-auth.dto';
-import { RegisterAuthDto } from './dto/register-auth.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 export declare class UsersService {
-    create(loginAuthDto: LoginAuthDto): string;
+    create(createUserDto: CreateUserDto): string;
     findAll(): string;
     findOne(id: number): string;
-    update(id: number, registerAuthDto: RegisterAuthDto): string;
+    update(id: number, updateUserDto: UpdateUserDto): string;
     remove(id: number): string;
 }
