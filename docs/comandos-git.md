@@ -15,7 +15,7 @@ git remote add origin https://github.com/Esteven2003/back_nest_angularE.git
 git remote -v
 ```
 ```
-git add.
+git add .
 git commit -m "proyecto base"
 git push origin master
 ```
