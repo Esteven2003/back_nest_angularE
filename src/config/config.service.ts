@@ -7,11 +7,11 @@ export class ConfigService {
   private readonly envConfig: { [key: string]: string };
     constructor(){
       const env = process.env.NODE_ENV || 'development'
-      const envFilePath = `${__dirname}/../../.env${env}`
+      const envFilePath = `${__dirname}/../../../.env.${env}`
       const existsPath = fs.existsSync(envFilePath)
         if (!existsPath){
-            console.log('*********', envFilePath)
-            process.exit(0)
+            console.error(`${envFilePath} no existe`);
+            process.exit(1)
         }
         this.envConfig = parse(fs.readFileSync(envFilePath))
     }
