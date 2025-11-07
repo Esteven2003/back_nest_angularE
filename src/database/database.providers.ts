@@ -17,7 +17,8 @@ export const databaseProvider = [
         database: config.get('DATABASE'),
         entities: [
           __dirname + '/../**/*.entity{.ts,.js}',
-        ]
+        ],
+        synchronize: true,
       });
 
       return dataSource.initialize();
