@@ -1,5 +1,5 @@
 import { PedidoProducto } from "../../pedido/entities/pedidoproducto.entity";
-import { categoria } from "../../categoria/entities/categoria.entity";
+import { Categoria } from "../../categoria/entities/categoria.entity";
 //import { categoria } from "src/modules/categoria/entities/categoria.entity";
 import { Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -21,8 +21,8 @@ export class Producto {
 
     estado: boolean;
 
-    @ManyToOne(() => categoria, (cat) => cat.producto)
-    categoria: categoria;
+    @ManyToOne(() => Categoria, (cat) => cat.producto)
+    categoria: Categoria;
 
     @OneToMany(() => PedidoProducto, pedprod => pedprod.producto )
     pedidoProducto: PedidoProducto[];
