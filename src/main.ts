@@ -14,6 +14,7 @@ async function bootstrap() {
 
   // swagger
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Product example')
     .setDescription('The Product API description')
     .setVersion('1.0')

@@ -21,12 +21,15 @@ export class CategoriaService {
   
   
   async findAll() {
-    return await this.categoriaRepository.find();
+    return await this.categoriaRepository.find({order:{ id:'asc'}});
   }
   
   async findOne(id: number) {
-    
-    //return await this.categoriaRepository.findOne(id);
+    return await this.categoriaRepository.findOne({
+      where: {
+        id:id
+      }
+    });
   }
 
   async update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
