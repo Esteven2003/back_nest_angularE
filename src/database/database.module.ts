@@ -17,8 +17,9 @@ import { ConfigModule } from 'src/config/config.module';
         username: config.get('USERNAME')||'root',
         password: config.get('PASSWORD')||'prueba',
         database: config.get('DATABASE'),
+        autoLoadEntities: true,
         entities: [
-          __dirname + '/../*/.entity{.ts,.js}',
+          __dirname + '/../**/*.entity{.ts,.js}',
         ],
       })
     })
