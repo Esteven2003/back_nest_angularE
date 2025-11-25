@@ -4,6 +4,7 @@ import { ConfigService } from 'src/config/config.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from 'src/config/config.module';
 
+
 @Module({
   imports:[
     TypeOrmModule.forRootAsync({
