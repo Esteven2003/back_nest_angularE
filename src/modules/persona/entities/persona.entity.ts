@@ -13,6 +13,6 @@ export class Persona {
     apellidos:string
 
     @OneToOne (()=>User, user=>user.persona)
-    @JoinColumn()
+    @JoinColumn({name: 'userId'})
     user:User
 }

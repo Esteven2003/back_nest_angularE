@@ -3,6 +3,14 @@ import { databaseProvider } from './database.providers';
 import { ConfigService } from 'src/config/config.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from 'src/config/config.module';
+import { User } from 'src/modules/users/entities/user.entity';
+import { Persona } from 'src/modules/persona/entities/persona.entity';
+import { Producto } from 'src/modules/producto/entities/producto.entity';
+import { Categoria } from 'src/modules/categoria/entities/categoria.entity';
+import { PedidoProducto } from 'src/modules/pedido/entities/pedidoproducto.entity';
+import { Pedido } from 'src/modules/pedido/entities/pedido.entity';
+import { Cliente } from 'src/modules/cliente/entities/cliente.entity';
+
 
 
 @Module({
@@ -17,7 +25,7 @@ import { ConfigModule } from 'src/config/config.module';
         username: config.get('USERNAME')||'root',
         password: config.get('PASSWORD')||'prueba',
         database: config.get('DATABASE'),
-        entities: [
+        entities: [User, Persona, Producto, Categoria, PedidoProducto, Pedido, Cliente,
           __dirname + '/../*/.entity{.ts,.js}',
         ],
       })
